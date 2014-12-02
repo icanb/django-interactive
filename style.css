@@ -104,6 +104,37 @@ pre {
   padding: 16px;
 }
 
+
+.doc {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+pre.left {
+  font-size: 12px;
+  display: inline-block;
+  vertical-align: top;
+  top:  0;
+  width: 450px;
+}
+
+.text-right {
+  float: right;
+  width: 310px;
+}
+
+.text-right p {
+  width: 100%;
+}
+
+code {
+  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  background-color: #f3f3f3;
+}
+
+i  {
+  font-style: italic;
+}
 .sample#title {
     background: #fff;
     padding: 125px 0 175px 0;
@@ -164,10 +195,11 @@ hr.subtle {
   display: inline-block;
   width: 450px;
   border-top-color: #eee;
-  margin-top: 18px;
-  margin-bottom: 16px;
+  margin-top: 22px;
+  margin-bottom: 20px;
 }
-section ul {
+
+.right {
     float: right;
 }
 
@@ -216,4 +248,16 @@ footer p a {
 
 footer p a:hover {
     color: #000;
+}
+
+ul.square {
+  width: 100%;
+  list-style-position: inside;
+  margin-left: 30px;
+}
+
+ul.square li {
+  list-style: square;
+  margin-top: 4px;
+  margin-bottom: 6px;
 }
