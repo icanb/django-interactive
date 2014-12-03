@@ -18,17 +18,7 @@ This library should make simple things easy, and complex things still possible. 
 
 ## Use
 
-There are currently two types of views. These views are just like usual django action methods, but defined with decorators.
-
-* `page_view`
-* `sub_view`
-
-For each subview, there are three JS methods generated. If the sub_view method is called `render_list`, the library generates:
-
-* `reload_render_list`: Rerenders the up-to-date html dynamically and replaced the view on the page.
-* `html_render_list`: Returns the up-to-date html as a parameter to the callback function. (async function)
-* `json_render_list`: Returns the up-to-date json from the view as a parameter to the callback function(async function)
-
+Please refer to [web page](http://icanberk.github.io/django-interactive) for now.
 
 ## Examples
 
@@ -38,20 +28,6 @@ Please especially look at `todo.js` for implementations.
 
 We were able to implement lots of AJAX capability with couple lines.
 
-## Installing for Development
-
-Create a virtual environment and activate it by doing 
-
-```
-  virtualenv venv
-  source venv/bin/activate
-```
-
-Install requirements.txt in `/example` directory or install the package using pip if you are working on a different project.
-
-```
-  pip install git+ssh://git@github.com/CMU-Web-Application-Development/Team71.git
-```
 
 ## Installing
 
@@ -66,127 +42,10 @@ In `settings.py`, add `django-interactive` to your installed apps.
 ```
 INSTALLED_APPS = (
     ...
-    'django-interactive',
+    'interactive',
     ...
 )
 ```
-
-## Building for Distribution
-
-The distribution information is in `setup.py`. Running 
-
-```
-  python setup.py sdist
-```
-
-will generate the necessary files in `dist` directory.
-
-## Product Backlog
-
-* **Making an empty module that is installable by Django**
-
-   This feature will enable easy installation of the feature into the django framework so  users can use our library from inside the Django applications. Once the user installs library, they can easily import the modules and start using the features of our in the application they are working. Because the installation is easy it decreases the effort required from the users end in setup and precious time and energy can be used to actually developing applications.
-   
-   After creating this, we should also find an easy way to use this module in "Development mode" so that we don't need to re-install the package everytime we change something. It would drop the productivity a lot.
-   
-   		Expected time: 2 hours
-
-* **Creating the `@page_view` decorator**
-
-   This decorator identifies the method that is subsequently written as the one that renders an entire page. With this decorator in place, our framework can insert the necessary JavaScript stubs and necessary libraries. This also makes sure that similar stubs or same libraries are only injected in the page once.
-   
-   		Expected time: 2 hours
-
-
-* **Creating the `@sub_view` decorator**
-
-   This decorator should take the name of the template and the context, and return the representation for sub_view so that the page views can render it, or helper methods(eg.json generator) can use it.For each subview, there are three JS methods generated.
-   
-   		Expected time: 3 hours
-
-* **Creating the ability to render subviews inside other templates**
-
-   This will allow developers to render subviews in different templates. It will give developers the flexibility to render swift views in different templates. We will be using "template_tags" to enable this feature. We really would like to refrain from forcing user to write `{% load ... %}` on top of every template, but it might not be technically possible.
-   
-   		Expected time: 1 hour
-
-* **Creating a URL and action for `html_...` method**
-
-   `html_..` is supposed to return the up-to-date html string. Since our goal is to prevent user from manually doing this, we will need to dynamically create a url, and action methods that are mapped to these urls.
-   
-		Expected time: 1 hour
-
-* **Creating a URL and action for `json_...` method**
-
-   `json_render_list` is supposed to return JSON representation of the context values. This will be hard because we have no idea about the type of the variables. They might be plain dictionaries or query sets. We need to write a robust checker that recursively goes through the variables and decide how to serialize them. 
-   
-   		Expected time: 2 hours
-
-* **Creating a JS Stub generator**
-
-   This is so that the framework auto generates the stubs for the necessary javascript functions as and when required. The stub generator will be in Python and it will generate JavaScript code. We need to come up with a good architecture for generating methods in general and then move on to implementing individual methods.
-
-		Expected time: 2 hours
-
-* **Implementing the stub generator for `html_...` method**
-
-   `html_..` method will send an AJAX request to the Django application and get back the HTML string. It is not supposed to do anything other than passing the string as a callback.
-	
-		Expected time: 2 hours
-
-* **Implementing the stub generator for `reload_...` method**
-
-   `reload_...` method is similar to `html_...` but instead of only passing the string, it will actually find the parent view of the element and replace the html string inside it.
-   
-   		Expected time: 3 hours
-
-* **Implementing the stub generator `json_...` method**
-
-   `json_...` method is again similar to `html_...` but instead of a string it will get the JSON representation and pass it as a callback.
-    
-    	Expected time: 1 hour
-
-
-* **Debugging and creating a sample application**
-
-   The sample application will help the users to understand how to use the various features of the framework within Django. The application will exercise all features of the framework to help the users understand the power behind the framework.
-      
-    	Expected time: 1 hour writing the application (because the whole thing is about speed) + 5 hours of debugging
-
-* **Registering the package with PIP registry**
-
-	We would like other developers to use it, so we will register the library to PIP registery. This way people can do `pip install django-interactive` and start using it in their applications.
-	
-		Expected time: 1.5 hour
-	
-* **(Optional) Integrating the JS stubs with a BackboneJS framework**
-
-	Backbone views already have methods called "render:" that is supposed to render that view. We can try extending the backbone library to use our `html...` method by default.
-	 		
-	 	Expected time: 4 hours
-
-
-## Roadmap
-
-### Sprint 1 - 10 November (Product owner: Naman Seth)
-
-* **Making an empty module that is installable by Django** (Ilter)
-
-* **Creating the `@page_view` decorator** (Naman)
-
-* **Creating the `@sub_view` decorator** (Ilter)
-
-* **Creating the ability to render subviews inside other templates**(Naman)
-
-### Sprint 2 - 17 November (Product owner: Ilter Canberk)
-
-* **Creating a URL and action for html_... method (Ilter)
-
-* **Creating a URL and action for json_... method (Ilter)
-
-* **Creating a JS Stub generator (Naman)
-
-* **Implementing the stub generator for html_... method (Naman)
 
 ## Contributors
 
