@@ -1,0 +1,6 @@
+{% load subview %}
+
+This is the List.
+{% for item in items %}
+	{% subview 'render_item' item %}
+{% endfor %}

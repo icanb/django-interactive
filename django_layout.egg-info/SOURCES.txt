@@ -1,0 +1,10 @@
+setup.py
+django_layout.egg-info/PKG-INFO
+django_layout.egg-info/SOURCES.txt
+django_layout.egg-info/dependency_links.txt
+django_layout.egg-info/not-zip-safe
+django_layout.egg-info/requires.txt
+django_layout.egg-info/top_level.txt
+layout/__init__.py
+layout/decorators.py
+layout/templates/stubs/base_js_stub.template
